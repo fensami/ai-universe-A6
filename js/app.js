@@ -23,10 +23,15 @@ const displayUniverse = aiUniverse =>{
                       <p class="card-text">2.${universe.features[1]}</p>
                       <p class="card-text">3.${universe.features[2]}</p>
                       <hr>
-                      <h5 class="fw-bold">${universe.name}</h5>
-                      </div>
-                      
-                    </div>
+                      <article class="d-flex justify-content-center align-items-center">
+                            <div>
+                                <h5 class="fw-bold">${universe.name}</h5>
+                        <p>Date:${universe.published_in} </p>
+                            </div>
+                            <div>
+                                <img class="img-fluid float-end w-25 h-auto" src="images/next.png" alt=""> 
+                            </div>
+                        </article>
                   </div>
                 </div>
         `
