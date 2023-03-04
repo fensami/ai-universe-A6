@@ -80,14 +80,17 @@ const displayPhoneDetails = universeId => {
   console.log(universeId);
   const universeDetails = document.getElementById('universe-details')
      universeDetails.innerHTML = `
-     <div class="container ">
-     <div class="row row-cols-2">
- <div class="col bg-danger bg-opacity-10 rounded-3 g-col-6">
+     <div class="container mb-5 mt-2 ">
+     <div class="d-flex gap-2">
+
+ <div class="col bg-danger bg-opacity-10 rounded-3 p-3">
        <h4 class="mt-2">${universeId.description ? universeId.description: 'No More Details'}</h4>
-       <div class="row row-cols-3 p-2 ">
-         <div class="col bg-white rounded-3">${universeId.pricing[0].price ? universeId.pricing[0].price: 'No Price Found'}</div>
-         <div class="col bg-white rounded-3 ml-2">${universeId.pricing[1].price}</div>
-         <div class="col bg-white rounded-3 ml-2">${universeId.pricing[2].price}</div>
+       <div class="d-flex container mx-auto fw-bold gap-2 mt-3 ">
+         <div class="col bg-white rounded-3 p-3 text-success ">${universeId.pricing[0].price ? universeId.pricing[0].price: 'No Price Found'}</br> ${universeId.pricing[0].plan}</div>
+
+         <div class="col bg-white text-warning rounded-3 ml-2 p-3">${universeId.pricing[1].price ? universeId.pricing[1].price:'No Price Found'} </br> ${universeId.pricing[1].plan}</div>
+
+         <div class="col bg-white rounded-3 ml-2 p-3 text-danger-emphasis">${universeId.pricing[2].price ? universeId.pricing[2].price: 'No Price Found'} </br> ${universeId.pricing[2].plan}</div>
        </div>
 
        <!-- article -->
@@ -118,8 +121,8 @@ const displayPhoneDetails = universeId => {
 
 
  <div class="col rounded-3 border ml-5 text-center">
-         <img class="img-fluid mt-2 rounded" src="${universeId.image_link[0] ? universeId.image_link[0]: 'No images Found'}" alt="">
-         <p>${universeId.input_output_examples[0].input}
+         <img class="img-fluid mt-2 rounded p-3" src="${universeId.image_link[0] ? universeId.image_link[0]: 'No images Found'}" alt="">
+         <p class="mt-3">${universeId.input_output_examples[0].input}
          </p>
          <p>${universeId.input_output_examples[0].output ? universeId.input_output_examples[0].output: 'No! Not Yet! Take a break!!!'}
          </p>
