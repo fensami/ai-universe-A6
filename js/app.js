@@ -1,27 +1,29 @@
-const universeDataLoad = async () => {
+const universeDataLoad = async (dataLimit) => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     const res = await fetch(url);
     const data = await res.json();
-    displayUniverse(data.data.tools);
+    displayUniverse(data.data.tools,dataLimit);
 }
 
 const displayUniverse = aiUniverse =>{
     // console.log(aiUniverse);
     const displayContainer = document.getElementById('display-container');
-    //display 4 cards 
-    
-
-    // document.getElementById('btn-show-all').addEventListener('click', function(){
-    //   console.log('click');
-    //   const showAll = document.getElementById('show-all');
-    //   if(dataLimit && aiUniverse.length > 4){
-    //     aiUniverse = aiUniverse.slice(0,4);
-    //     showAll.classList.remove('d-none')
-    //   }
-    //   else{
-    //     showAll.classList.add('d-none')
-    //   }
-    // })
+    //show all data
+    const showAll = document.getElementById('show-all')
+    if(universeDataLoad || aiUniverse.length > 13){
+      aiUniverse = aiUniverse.slice(0,13);
+      showAll.classList.remove('d-none')
+    }
+    else{
+      showAll.classList.add('d-none')
+    }
+    const dataProsecce = (dataLimit)=>{
+      universeDataLoad(dataLimit)
+    }
+    document.getElementById('btn-show-all').addEventListener('click', function(){
+      toggleSpinner(true)
+     dataProsecce(10)
+    })
 
 
 
@@ -57,8 +59,10 @@ const displayUniverse = aiUniverse =>{
         `
         displayContainer.appendChild(universeDiv)
     })
+    toggleSpinner(false)
 }
 
+// data load form id with dynamic and using modal
 const loadPhoneDetails = async id => {
   // console.log(id);
   const url =`https://openapi.programming-hero.com/api/ai/tool/${id}`
@@ -68,24 +72,21 @@ const loadPhoneDetails = async id => {
 }
 const displayPhoneDetails = universeId => {
   console.log(universeId);
-  
-  // const modalTitle =document.getElementById('phoneDetailModalLabel');
-  // modalTitle.innerText = universeId.description;
   const universeDetails = document.getElementById('universe-details')
      universeDetails.innerHTML = `
-     <div class="container text-center">
+     <div class="container ">
      <div class="row row-cols-2">
  <div class="col bg-danger bg-opacity-10 rounded-3 g-col-6">
-       <h4 class="mt-2">${universeId.description}</h4>
+       <h4 class="mt-2">${universeId.description ? universeId.description: 'No More Details'}</h4>
        <div class="row row-cols-3 p-2 ">
-         <div class="col bg-white rounded-3">${universeId.pricing[0].price}</div>
+         <div class="col bg-white rounded-3">${universeId.pricing[0].price ? universeId.pricing[0].price: 'No Price Found'}</div>
          <div class="col bg-white rounded-3 ml-2">${universeId.pricing[1].price}</div>
          <div class="col bg-white rounded-3 ml-2">${universeId.pricing[2].price}</div>
        </div>
 
        <!-- article -->
        <article class="row row-cols-2">
-         <div class="col">
+         <div class="col mt-3">
              <h4>Features</h4>
              <ul>
                  <li></li>
@@ -94,12 +95,12 @@ const displayPhoneDetails = universeId => {
              </ul>
          </div>
 
-         <div class="col">
+         <div class="col mt-3">
              <h4>Inegrations</h4>
              <ul>
-                 <li>${universeId.integrations[0]}</li>
-                 <li>${universeId.integrations[1]}</li>
-                 <li>${universeId.integrations[2]}</li>
+                 <li>${universeId.integrations[0] ? universeId.integrations[0]: 'No data found' }</li>
+                 <li>${universeId.integrations[1] ? universeId.integrations[1]: 'No data found' }</li>
+                 <li>${universeId.integrations[2] ? universeId.integrations[2]: 'No data found'}</li>
              </ul>
 
          </div>
@@ -110,8 +111,8 @@ const displayPhoneDetails = universeId => {
        
 
 
- <div class="col rounded-3 border ml-5">
-         <img class="img-fluid mt-2 rounded" src="${universeId.image_link[1]}" alt="">
+ <div class="col rounded-3 border ml-5 text-center">
+         <img class="img-fluid mt-2 rounded" src="${universeId.image_link[1] ? universeId.image_link[1]: 'No images Found'}" alt="">
          <p>${universeId.input_output_examples[0].input}
          </p>
          <p>${universeId.input_output_examples[0].output}
@@ -121,6 +122,17 @@ const displayPhoneDetails = universeId => {
    </div>
   `
   
+}
+
+// loader spinner
+const toggleSpinner = isLoading =>{
+  const loaderSection = document.getElementById('loader-spinner')
+  if(isLoading){
+    loaderSection.classList.remove('d-none')
+  }
+  else{
+    loaderSection.classList.add('d-none')
+  }
 }
 
 

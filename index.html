@@ -18,6 +18,7 @@
 
     <!-- Main section -->
     <main>
+        
 
         <!-- Display Card Section -->
         <section class="container mt-5">
@@ -30,12 +31,22 @@
              </div>
         </section>
 
+        <!-- Spinner -->
+        <section id="loader-spinner" class="d-none">
+          <div style="height: 400px;" class="d-flex justify-content-top">
+            <div class="spinner-border text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </section>
+      
+
 
         <!-- Modal Section -->
         <div class="modal fade" id="universeDetailModal" tabindex="-1" aria-labelledby="universeDetailModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
-              <div class="modal-header">
+              <div>
                 <h1 class="modal-title fs-5" id="universeDetailModalLabel"></h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
