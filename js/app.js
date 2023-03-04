@@ -46,10 +46,16 @@ const displayUniverse = aiUniverse =>{
                       <article class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h5 class="fw-bold">${universe.name}</h5>
-                        <p>Date:${universe.published_in} </p>
+                            
+                            <p class="d-flex justify-content-between align-items-center"><span class="material-symbols-outlined">
+                            calendar_month
+                            </span>${universe.published_in} </p>
                             </div>
+                           
                           <div>
-                          <button onclick="loadPhoneDetails('${universe.id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#universeDetailModal"> Show Ditails </button>
+                          <div onclick="loadPhoneDetails('${universe.id}')" href="#" class="" data-bs-toggle="modal" data-bs-target="#universeDetailModal"> <span class="material-symbols-outlined">
+                          chevron_right
+                          </span></div>
                           </div>
                      
                           
@@ -89,9 +95,9 @@ const displayPhoneDetails = universeId => {
          <div class="col mt-3">
              <h4>Features</h4>
              <ul>
-                 <li></li>
-                 <li>2</li>
-                 <li>3</li>
+                 <li>${universeId.features[1].feature_name}</li>
+                 <li>${universeId.features[2].feature_name}</li>
+                 <li>${universeId.features[3].feature_name}</li>
              </ul>
          </div>
 
@@ -112,10 +118,10 @@ const displayPhoneDetails = universeId => {
 
 
  <div class="col rounded-3 border ml-5 text-center">
-         <img class="img-fluid mt-2 rounded" src="${universeId.image_link[1] ? universeId.image_link[1]: 'No images Found'}" alt="">
+         <img class="img-fluid mt-2 rounded" src="${universeId.image_link[0] ? universeId.image_link[0]: 'No images Found'}" alt="">
          <p>${universeId.input_output_examples[0].input}
          </p>
-         <p>${universeId.input_output_examples[0].output}
+         <p>${universeId.input_output_examples[0].output ? universeId.input_output_examples[0].output: 'No! Not Yet! Take a break!!!'}
          </p>
      </div>
      </div>
