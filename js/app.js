@@ -86,11 +86,11 @@ const displayPhoneDetails = universeId => {
  <div class="col bg-danger bg-opacity-10 rounded-3 p-3">
        <h4 class="mt-2">${universeId.description ? universeId.description: 'No More Details'}</h4>
        <div class="d-flex container mx-auto fw-bold gap-2 mt-3 ">
-         <div class="col bg-white rounded-3 p-3 text-success ">${universeId.pricing[0].price ? universeId.pricing[0].price: 'Free of Cost/Basic'}</br> ${universeId.pricing[0].plan}</div>
+         <div class="col bg-white rounded-3 p-3 text-success ">${universeId.pricing[0].price ? universeId.pricing[0].price: "Free of Cost/Basic"}</br> ${universeId.pricing[0].plan}</div>
 
          <div class="col bg-white text-warning rounded-3 ml-2 p-3">${universeId.pricing[1].price ? universeId.pricing[1].price:'Free Of Cost/Pro'} </br> ${universeId.pricing[1].plan}</div>
 
-         <div class="col bg-white rounded-3 ml-2 p-3 text-danger-emphasis">${universeId.pricing[2].price ? universeId.pricing[2].price: 'No Price Found'} </br> ${universeId.pricing[2].plan}</div>
+         <div class="col bg-white rounded-3 ml-2 p-3 text-danger-emphasis">${universeId.pricing[2].price ? universeId.pricing[2].price: 'Free of Cost /Enterprise'} </br> ${universeId.pricing[2].plan}</div>
        </div>
 
        <!-- article -->
